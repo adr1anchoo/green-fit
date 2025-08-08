@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Fit - Salud, innovación y comunidad</title>
+  <meta name="description" content="Green Fit: bienestar, tecnología y comunidad. Descubrí rutinas, reservá tu lugar y accedé a un catálogo de servicios fitness para transformar tu vida.">
+  <meta name="keywords" content="Green Fit, entrenamiento, fitness, salud, rutinas, reservas, catálogo">
+  <meta name="author" content="Green Fit Team">
+  <meta property="og:title" content="Green Fit - Entrená diferente">
+  <meta property="og:description" content="Entrená en Green Fit: salud, tecnología y comunidad.">
+  <meta property="og:type" content="website">
+  <!-- Estilos principales y FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI','Arial',sans-serif;background:#f9fff9;color:#222;min-height:100vh;overflow-x:hidden}a{text-decoration:none;color:inherit;transition:color .2s}h1,h2,h3{color:#2e7d32;font-weight:700}.container{max-width:1100px;margin:0 auto;padding:0 18px}img{display:block;max-width:100%}
+    /* HEADER */
+    .header{background:linear-gradient(90deg,#e0f2f1 60%,#fff 100%);padding:20px 0 12px 0;display:flex;align-items:center;justify-content:space-between}
+    .header .logo{height:46px;margin-right:8px}
+    .header .nav ul{display:flex;gap:26px;list-style:none}
+    .header .nav ul li a{color:#2e7d32;font-weight:600;font-size:1.09rem;padding:7px 10px;border-radius:9px;transition:background .16s}
+    .header .nav ul li a.active,.header .nav ul li a:hover{background:#d7ffe2;color:#215823}
+
+    /* HERO */
+    .hero{display:flex;flex-direction:column;align-items:center;padding:52px 0 36px 0;background:linear-gradient(180deg,#e0f2f1 78%,#fff 100%)}
+    .hero-content{width:100%;max-width:650px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+    /* SLIDER */
+    .slider-home{max-width:480px;width:100%;margin:0 auto 20px auto;border-radius:22px;box-shadow:0 8px 36px rgba(46,125,50,0.18);position:relative;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden;min-height:210px}
+    .slider-images{width:100%;display:flex;position:relative;overflow:hidden}
+    .slider-img{width:100%;min-width:100%;max-height:280px;object-fit:cover;opacity:0;position:absolute;left:0;top:0;transition:opacity 0.6s;z-index:1}
+    .slider-img.active{opacity:1;position:relative;z-index:2}
+    .slider-arrow{background:rgba(46,125,50,0.13);border:none;color:#2e7d32;font-size:2rem;width:38px;height:52px;border-radius:50%;position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;z-index:3;transition:background .17s,color .18s;outline:none}
+    .slider-arrow.left{left:10px}
+    .slider-arrow.right{right:10px}
+    .slider-arrow:hover{background:#2e7d32;color:#fff}
+    @media (max-width:600px){.slider-home{max-width:97vw;min-height:150px}.slider-arrow{font-size:1.4rem;width:32px;height:38px}}
+    /* HERO TEXTO */
+    .hero-text{margin-top:10px;text-align:center}
+    .hero-text h1{font-size:2.5rem;font-weight:900;margin-bottom:8px;letter-spacing:.01em}
+    .hero-text p{font-size:1.16rem;margin-bottom:15px;color:#215823}
+    .btn-cta{display:inline-block;padding:14px 38px;background:linear-gradient(90deg,#2e7d32 80%,#215823 100%);color:#fff;border:none;border-radius:10px;font-size:1.13rem;font-weight:700;box-shadow:0 3px 18px rgba(46,125,50,0.14);transition:background .2s,transform .16s,box-shadow .17s;cursor:pointer}
+    .btn-cta:hover{background:#215823;transform:scale(1.05) translateY(-2px);box-shadow:0 10px 32px rgba(46,125,50,0.18)}
+    /* CARDS */
+    .cards-grid{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;margin:34px 0 26px 0}
+    .card-home{min-width:230px;max-width:280px;flex:1 1 230px;background:#e0f2f1;border-radius:18px;box-shadow:0 4px 28px rgba(46,125,50,0.15);display:flex;flex-direction:column;align-items:center;padding:28px 20px 20px 20px;cursor:pointer;border:2.2px solid transparent;transition:transform .19s,box-shadow .21s,border-color .17s,background .19s;text-align:center}
+    .card-home:hover{transform:translateY(-7px) scale(1.045);box-shadow:0 16px 42px rgba(46,125,50,0.22);border-color:#2e7d32;background:#fff}
+    .card-home img{width:128px;border-radius:11px;margin-bottom:14px}
+    .card-home h2{font-size:1.18rem;margin-bottom:2px;font-weight:800}
+    .card-home p{color:#222;font-size:1.03rem}
+    /* INFO INSTITUCIONAL */
+    .info-home{background:#fff;border-radius:20px;box-shadow:0 6px 28px rgba(46,125,50,0.11);margin:32px auto 26px auto;padding:22px 34px;text-align:center;max-width:780px}
+    .info-home h3{margin-bottom:10px;color:#2e7d32;font-weight:900;font-size:1.18rem}
+    .info-home p{color:#222}
+    /* MINI CATÁLOGO */
+    .mini-catalogo{margin-bottom:16px;margin-top:0}
+    .mini-catalogo h3{text-align:center;margin-bottom:12px;font-size:1.16rem;color:#2e7d32;font-weight:800}
+    .mini-catalogo-grid{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;margin-top:8px}
+    .mini-cat-card{background:#e0f2f1;border-radius:11px;box-shadow:0 3px 16px rgba(46,125,50,0.10);display:flex;flex-direction:column;align-items:center;padding:15px 12px 10px 12px;min-width:105px;max-width:145px;transition:box-shadow .18s,transform .14s;text-align:center}
+    .mini-cat-card:hover{box-shadow:0 10px 24px rgba(46,125,50,0.13);transform:scale(1.09)}
+    .mini-cat-card img{width:66px;border-radius:7px;margin-bottom:6px}
+    .mini-cat-card span{color:#215823;font-weight:bold;font-size:1.06rem;margin-top:4px}
+    .mini-catalogo .btn-cta{display:block;margin:20px auto 0 auto;padding:10px 28px;font-size:1.01rem}
+    /* REDES Y FOOTER */
+    .redes-home{margin:40px 0 0 0}
+    .redes-home .redes-ic{display:flex;justify-content:center;gap:36px;margin-bottom:16px}
+    .redes-home .redes-ic a{color:#2e7d32;font-size:2.1rem;transition:color .18s,transform .14s}
+    .redes-home .redes-ic a:hover{color:#215823;transform:scale(1.17)}
+    .footer{background:#e0f2f1;color:#215823;text-align:center;padding:18px 0 8px 0;font-size:1rem;margin-top:48px;border-top-left-radius:16px;border-top-right-radius:16px;box-shadow:0 -2px 14px rgba(46,125,50,0.06)}
+    @media (max-width:900px){.hero-content{max-width:99vw}.cards-grid{flex-direction:column;gap:18px}.info-home{padding:18px 2vw}}
+    @media (max-width:650px){.hero-text h1{font-size:1.4rem}.slider-home{max-width:99vw}.card-home img{width:96px}}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header container">
+    <img src="assets/Green (2).png" alt="Logo Green Fit" class="logo" loading="lazy">
+    <nav class="nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="pages/quienes-somos.html">¿Quiénes somos?</a></li>
+        <li><a href="pages/catalogo.html">Catálogo</a></li>
+        <li><a href="pages/rutinas.html">Rutinas</a></li>
+        <li><a href="pages/reservas.html">Reservas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero/Slider principal -->
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-down">
+      <!-- Slider -->
+      <div class="slider-home" id="slider-home">
+        <button class="slider-arrow left" aria-label="Anterior">&#9664;</button>
+        <div class="slider-images">
+          <img src="assets/slider1.jpg" alt="Green Fit ambiente 1" class="slider-img active" loading="lazy">
+          <img src="assets/slider2.jpg" alt="Green Fit ambiente 2" class="slider-img" loading="lazy">
+        </div>
+        <button class="slider-arrow right" aria-label="Siguiente">&#9654;</button>
+      </div>
+      <!-- Título y CTA -->
+      <div class="hero-text">
+        <h1>Transformá tu bienestar <span style="color:#2e7d32;">con Green Fit</span></h1>
+        <p>Entrenamientos personalizados, comunidad, tecnología y salud en un solo lugar.</p>
+        <a href="pages/reservas.html" class="btn-cta">Reservá tu lugar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards principales -->
+  <section class="cards-grid container" data-aos="fade-up">
+    <div class="card-home" onclick="location.href='pages/catalogo.html'">
+      <img src="assets/personalizado.jpg" alt="Entrenamiento personalizado" loading="lazy">
+      <h2>Entrenamiento Personalizado</h2>
+      <p>Planes a tu medida, presenciales o a distancia.</p>
+    </div>
+    <div class="card-home" onclick="location.href='pages/catalogo.html'">
+      <img src="assets/alimentacion.jpg" alt="Plan de alimentación" loading="lazy">
+      <h2>Plan de Alimentación</h2>
+      <p>Asesoría nutricional y seguimiento adaptado a tu vida.</p>
+    </div>
+    <div class="card-home" onclick="location.href='pages/catalogo.html'">
+      <img src="assets/distancia.jpg" alt="Entrenamiento a distancia" loading="lazy">
+      <h2>Entrenamiento a Distancia</h2>
+      <p>Entrená estés donde estés, con feedback profesional.</p>
+    </div>
+    <div class="card-home" onclick="location.href='pages/catalogo.html'">
+      <img src="assets/presencial.jpg" alt="Entrenamiento presencial" loading="lazy">
+      <h2>Entrenamiento Presencial</h2>
+      <p>Clases individuales o grupales, con equipo profesional.</p>
+    </div>
+  </section>
+
+  <!-- Info institucional breve -->
+  <section class="info-home container" data-aos="fade-left">
+    <h3>Nuestra misión</h3>
+    <p>Mejorar la calidad de vida de cada persona y del planeta, integrando entrenamiento, alimentación consciente y tecnología de vanguardia en una comunidad activa y sostenible.</p>
+  </section>
+
+  <!-- Mini catálogo Home -->
+  <section class="mini-catalogo container" data-aos="zoom-in">
+    <h3>Servicios Destacados</h3>
+    <div class="mini-catalogo-grid">
+      <div class="mini-cat-card">
+        <img src="assets/personalizado.jpg" alt="Personalizado" loading="lazy">
+        <span>Personalizado</span>
+      </div>
+      <div class="mini-cat-card">
+        <img src="assets/alimentacion.jpg" alt="Alimentación" loading="lazy">
+        <span>Alimentación</span>
+      </div>
+      <div class="mini-cat-card">
+        <img src="assets/distancia.jpg" alt="A distancia" loading="lazy">
+        <span>Online</span>
+      </div>
+      <div class="mini-cat-card">
+        <img src="assets/presencial.jpg" alt="Presencial" loading="lazy">
+        <span>Presencial</span>
+      </div>
+    </div>
+    <a href="pages/catalogo.html" class="btn-cta">Ver Catálogo Completo</a>
+  </section>
+
+  <!-- Redes sociales -->
+  <section class="redes-home" aria-label="Redes sociales" data-aos="fade-right">
+    <div class="redes-ic">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Green Fit. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    // Slider simple para el home
+    const imgs = document.querySelectorAll('.slider-img');
+    const leftBtn = document.querySelector('.slider-arrow.left');
+    const rightBtn = document.querySelector('.slider-arrow.right');
+    let sliderIndex = 0;
+    function showSlide(n) {
+      imgs.forEach((img, i) => {
+        img.classList.toggle('active', i === n);
+      });
+    }
+    leftBtn.addEventListener('click', () => {
+      sliderIndex = (sliderIndex - 1 + imgs.length) % imgs.length;
+      showSlide(sliderIndex);
+    });
+    rightBtn.addEventListener('click', () => {
+      sliderIndex = (sliderIndex + 1) % imgs.length;
+      showSlide(sliderIndex);
+    });
+    setInterval(() => {
+      sliderIndex = (sliderIndex + 1) % imgs.length;
+      showSlide(sliderIndex);
+    }, 6000);
+  </script>
+</body>
+</html>
