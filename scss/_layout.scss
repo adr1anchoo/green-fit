@@ -1,0 +1,51 @@
+// Header y layout general
+.header {
+  @include flex-center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: $secondary-color;
+  position: relative;
+
+  .logo {
+    height: 30px;
+  }
+
+  .titulo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: $primary-color;
+  }
+
+  .nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+
+      li a {
+        color: $primary-color;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.frase {
+  text-align: center;
+  font-size: 1.2rem;
+  color: $primary-color;
+  padding: 20px 0;
+}
+
+.redes {
+  @include flex-center;
+  gap: 15px;
+  padding: 10px 0;
+
+  a {
+    color: $primary-color;
+    font-weight: bold;
+  }
+}
